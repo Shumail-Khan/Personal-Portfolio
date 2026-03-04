@@ -1,57 +1,91 @@
-import React from 'react'
-import { FaLinkedin, FaFacebook, FaGithub } from 'react-icons/fa'
+import React from "react";
+import { FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='bg-black text-white py-8'>
-      <div className='container mx-auto px-8 md:px-16 lg:px-24'>
-        <div className='flex flex-col md:flex-row md:space-x-12 items-center mb-4'>
-            <div className='flex-1 mb-4 md:mb-0'>
-                <h3 className='text-2xl font-bold mb-2'>Shumail</h3>
-                <p className='text-gray-400'>Full-Stack Developer, specializing in Web and Software Development</p>
-            </div>
-            <div className='flex-1 w-full'>
-                <form action="" className='flex items-center justify-center'>
-                    <input type="email" placeholder='Enter Email' 
-                    className='w-full p-2 rounded-l-lg bg-gray-800 border border-gray-600 focus:outline-none focus:border-green-400'/>
-                    <button className='bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-r-lg'>Subscribe</button>
-                </form>
-            </div>
+    <footer className="bg-black text-white">
+      <div className="container mx-auto px-6 md:px-16 lg:px-24 py-12">
+
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 border-b border-gray-700 pb-10">
+          
+          {/* Left */}
+          <div>
+            <h3 className="text-3xl font-bold mb-3">Shumail</h3>
+            <p className="text-gray-400 max-w-md">
+              Full-Stack Developer specializing in modern web and software
+              solutions. Building scalable and efficient systems.
+            </p>
+          </div>
+
+          {/* Right - Newsletter */}
+          <div>
+            <form className="flex w-full max-w-md">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-3 rounded-l-lg bg-gray-800 border border-gray-600 focus:outline-none focus:border-green-400"
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-r-lg font-semibold hover:opacity-90 transition"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8">
+
+          {/* Copyright */}
+          <p className="text-gray-400 text-sm text-center md:text-left">
+            © {new Date().getFullYear()} Shumail Khan. All rights reserved.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex space-x-6 text-xl">
+            <a
+              href="#"
+              className="text-gray-400 hover:text-white transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebook />
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-white transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="#"
+              className="text-gray-400 hover:text-white transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub />
+            </a>
+          </div>
+
+          {/* Links */}
+          <div className="flex space-x-6 text-sm">
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Privacy Policy
+            </a>
+            <a href="#" className="text-gray-400 hover:text-white transition">
+              Terms of Service
+            </a>
+          </div>
 
         </div>
       </div>
-    <div>
-        <p>
-            &copy; {new Date().getFullYear()}
-        </p>
-    </div>
-    <div>
-        <a href="">
-            <FaFacebook/>
-        </a>
-        <a href="">
-            <FaLinkedin/>
-        </a>
-        <a href="">
-            <FaGithub/>
-        </a>
-    </div>
-    <div>
-        <a href="">
-            Privacy
-        </a>
-        <a href="">
-            Terms of Service
-        </a>
-    </div>
-    <div>
-        <p>
-            &copy; 2021 Shumail Khan. All rights reserved.
-        </p>
-    </div>
-
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
