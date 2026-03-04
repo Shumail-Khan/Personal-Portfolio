@@ -1,30 +1,21 @@
-# ---------- Stage 1: Build ----------
-FROM node:18-alpine AS build
+# Stage 1: Build the React app
+FROM node:20-alpine AS builder
 
 WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-RUN npm install
-
-# Copy source code
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-
-# Build Vite app
 RUN npm run build
 
+# Stage 2: Serve with Vite preview
+FROM node:20-alpine
 
-# ---------- Stage 2: Production ----------
-FROM nginx:alpine
+WORKDIR /app
+COPY --from=builder /app /app
 
-# Remove default nginx static files
-RUN rm -rf /usr/share/nginx/html/*
+# Install vite preview globally
+RUN npm install -g vite
 
-# Copy built files from previous stage
-COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 5173
 
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["vite", "preview", "--port", "5173", "--host"]
